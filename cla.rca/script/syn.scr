@@ -1,0 +1,27 @@
+read -format pla {"mem.pla"}
+read -format verilog {"cordic.v"}
+
+current_design = "cordic"
+create_clock -name CLK -period 7 -waveform {3.5 7} find (port clock)
+set_dont_touch_network find(clock, "CLK")
+uniquify
+
+group -design XR -cell X_register { X_reg[0] X_reg[1] X_reg[2] X_reg[3] X_reg[4] X_reg[5] X_reg[6] X_reg[7] X_reg[8] X_reg[9] X_reg[10] X_reg[11] X_reg[12] X_reg[13] X_reg[14] X_reg[15] }
+
+group -design YR -cell Y_register { Y_reg[0] Y_reg[1] Y_reg[2] Y_reg[3] Y_reg[4] Y_reg[5] Y_reg[6] Y_reg[7] Y_reg[8] Y_reg[9] Y_reg[10] Y_reg[11] Y_reg[12] Y_reg[13] Y_reg[14] Y_reg[15]}
+
+group -design AngleR -cell Angle_register { Angle_reg[0] Angle_reg[1] Angle_reg[2] Angle_reg[3] Angle_reg[4] Angle_reg[5] Angle_reg[6] Angle_reg[7] Angle_reg[8] Angle_reg[9] Angle_reg[10] Angle_reg[11] Angle_reg[12] Angle_reg[13] Angle_reg[14] Angle_reg[15]}
+
+group -design IR -cell Iteration_register { iteration_reg[0] iteration_reg[1] iteration_reg[2] iteration_reg[3] }
+
+compile -map_effort medium
+
+write -format db -hierarchy -o compiled_without_test.db
+
+set_test_methodology full_scan
+set_scan_style multiplexed_flip_flop
+check_test
+
+set_scan_configuration -chain_count 1
+insert_scan
+insert_jtag
