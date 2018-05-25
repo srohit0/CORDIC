@@ -1,6 +1,6 @@
 # INTRODUCTION
 
-The CORDIC (COordinate Rotation Digital Computing) algorithm is a time and
+The **CORDIC** (COordinate Rotation Digital Computing) algorithm is a time and
 space efficient algorithm mainly used for calculate the Sine and Cosine of
 a given angle.  It can also be used for computing log, exponent and square
 root. Common uses are sine and cosine generation, vector magnitude, polar-
@@ -42,36 +42,37 @@ CORDIC gives best performance with area panelty.
 
 Verilog instantiation in oc the free-CORDIC would look like this.
 
+```varilog
 cordic cordicInstance (CosX,SinX,theta,Sign,clock,reset);
+```
 
 # SIGNAL DECLARATION
 
-clock | Input | The main system clock.  All synchronous signals are clocked 
-                off the rising edge of clk.
-reset | Input  | An active high synchronous reset signal.
-Sign  | Input  | Sign bit for the input Angle.
-theta | Input  | 16 bit input in degrees (8 integer bits, 8 fractional bits).
-CosX  | Output | 17 bit output value (1 bit sign and 16 bit value) of Cos(theta)
-                 in 2's complement representation. Valid only after 16 clock
-                 cycle from reset goes low.
-SinX  | Output | 17 bit output value (1 bit sign and 16 bit value) of Sin(theta)
-                 in 2's complement representation. Valid only after 16 clock
-                 cycle from reset goes low.
+| Name  |  Dir   |               Description
+|-------|--------|-----------------------------------------------------------------
+| clock | Input  | The main system clock.  All synchronous signals are clocked  off the rising edge of clk.
+| reset | Input  | An active high synchronous reset signal.
+| Sign  | Input  | Sign bit for the input Angle.
+| theta | Input  | 16 bit input in degrees (8 integer bits, 8 fractional bits).
+| CosX  | Output | 17 bit output value (1 bit sign and 16 bit value) of Cos(theta) in 2's complement representation. Valid only after 16 clock cycle from reset goes low.
+| SinX  | Output | 17 bit output value (1 bit sign and 16 bit value) of Sin(theta) in 2's complement representation. Valid only after 16 clock cycle from reset goes low.
 
 # CONTENTS
 
 After unzipping, you shall see the following directories and subdirectories.
 
+```
 README    : this file.
-cla/      : CORDIC uding carry look ahead adder.
+cla/      : CORDIC with carry look ahead adder.
   hdl/    : verilog RTL code.
   script/ : sample script for synthesis.
-cla.rca/  : CORDIC uding carry look ahead and ripple carry adder.
+cla.rca/  : CORDIC with carry look ahead and ripple carry adder.
   hdl/    : verilog RTL code.
   script/ : sample script for synthesis.
-cla/      : CORDIC uding carry look ahead adder.
+cla/      : CORDIC with carry look ahead adder.
   hdl/    : verilog RTL code.
   script/ : sample script for synthesis.
+```
 
 # SIMULATION
 
@@ -79,8 +80,10 @@ file sim.txt (present under each hdl/ directory) contains the file names exactly
 the order the simulator should see. For example, with verilog-XL issue the\
 following commands to get the simulattion results.
 
+```
 > cd cla/hdl
 > verilog -f sim.txt
+```
 
 # SYNTHESIS
 
@@ -90,5 +93,7 @@ If you have any more questions, free free to drop me a mail.
 
 # HISTORY
 
+```
 v0.1a - First Draft (Nov 1997)
 v0.1  - The inital release (May, 2000)
+```
