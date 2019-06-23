@@ -1,10 +1,12 @@
+![CORDIC](misc/cordic.jpg)
+
 # INTRODUCTION
 
 The **CORDIC** (COordinate Rotation Digital Computing) algorithm is a time and
 space efficient algorithm mainly used for calculate the Sine and Cosine of
 a given angle.  It can also be used for computing log, exponent and square
 root. Common uses are sine and cosine generation, vector magnitude, polar-
-cartesian conversions, and vector rotation. The Free-CORDIC core is a
+cartesian conversions, and vector rotation. The CORDIC core is a
 parameterized Verilog RTL code for a 16 bit fixed point CORDIC.  The input
 to this system is 17 bit angle in degrees (signed magnitude representation)
 and output is 17 bit sine and cosine values. The time efficiency in this
@@ -12,7 +14,7 @@ algorithm is brought about by the replacement of multiplication/division
 operation by shift operation. Hence the only costly operation left is
 addition.  So adders are the heart of CORDIC architecture.  
 
-The Free-CORDIC core uses three different adders, i.e. CLA (Carry Look-ahead
+The CORDIC core uses three different adders, i.e. CLA (Carry Look-ahead
 Adder), RCA (Ripple Carry Adder)and a combination of CLA and RCA. Combination
 of CLA and RCA means small sets of CLAs connected through rippling carry-out
 and carry-ins. All the three architectures have their area versus efficiency
@@ -40,7 +42,7 @@ CORDIC gives best performance with area panelty.
 
 # INTERFACE
 
-Verilog instantiation in oc the free-CORDIC would look like this.
+Verilog instantiation in oc the CORDIC would look like this.
 
 ```varilog
 cordic cordicInstance (CosX,SinX,theta,Sign,clock,reset);
@@ -89,7 +91,7 @@ following commands to get the simulattion results.
 
 see the sample script */script/syn.scr under each directory.
 
-If you have any more questions, free free to drop me a mail.
+If you have any more questions, feel free to drop me a mail.
 
 # HISTORY
 
