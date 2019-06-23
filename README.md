@@ -1,5 +1,3 @@
-![CORDIC](misc/cordic.jpg)
-
 # INTRODUCTION
 
 The **CORDIC** (COordinate Rotation Digital Computing) algorithm is a time and
@@ -99,3 +97,4 @@ If you have any more questions, feel free to drop me a mail.
 v0.1a - First Draft (Nov 1997)
 v0.1  - The inital release (May, 2000)
 ```
+![CORDIC](misc/cordic.jpg)
